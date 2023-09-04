@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import toast, { Toaster } from 'react-hot-toast';
 import { fetchSearchMovies } from 'api/api';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { SeacrhForm } from 'components/SearchForm/SearchForm';
+import { Spiner } from 'components/Spinner/Spiner';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const movieQuery = searchParams.get('query');
-  const location = useLocation();
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
@@ -62,27 +64,9 @@ const Movies = () => {
 
   return (
     <div>
-      <form onSubmit={heandleSubmit}>
-        <input
-          type="text"
-          name="query"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movies"
-        />
-        <button type="submit">Search</button>
-      </form>
-
-      <ul>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-              {movie.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
+      <SeacrhForm onSubmit={heandleSubmit} />
+      {loading && <Spiner />}
+      {movies && <MoviesList movies={movies} />}
       <Toaster />
     </div>
   );

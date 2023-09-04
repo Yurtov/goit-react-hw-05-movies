@@ -1,7 +1,9 @@
-import { fetchTrendingMovies } from 'api/api';
-import { TrendingMovies } from 'components/TrendingMovies/TrendingMovies';
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { fetchTrendingMovies } from 'api/api';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { Spiner } from 'components/Spinner/Spiner';
+import { TitleHome } from 'components/TitleHome/TitleHome';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -23,11 +25,13 @@ const Home = () => {
       }
     }
     getTrendingMovies();
-  }, [movies]);
+  }, []);
 
   return (
     <div>
-      <TrendingMovies movies={movies} />
+      <TitleHome />
+      {loading && <Spiner />}
+      {movies && <MoviesList movies={movies} />}
       <Toaster />
     </div>
   );
