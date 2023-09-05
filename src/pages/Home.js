@@ -6,17 +6,14 @@ import { Spiner } from 'components/Spinner/Spiner';
 import { TitleHome } from 'components/TitleHome/TitleHome';
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (movies === []) return;
-
     async function getTrendingMovies() {
       try {
         setLoading(true);
         const { results } = await fetchTrendingMovies();
-
         setMovies(results);
       } catch (error) {
         toast.error(`Oops, ${error}. Please try again.`);
