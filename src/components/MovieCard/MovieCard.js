@@ -18,15 +18,26 @@ export const MovieCard = ({ movie }) => {
         {movie.original_title} ({yearRelese})
       </NameMovie>
       <CardContainer>
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt="movie poster"
-          loading="lazy"
-          width={250}
-        />
+        {movie.poster_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt="movie poster"
+            loading="lazy"
+            width={250}
+          />
+        ) : (
+          <img
+            src={'https://via.placeholder.com/250x375'}
+            alt="movie poster"
+            loading="lazy"
+          />
+        )}
+
         <MovieInfo>
           <li>
-            <p><Subtitle>Release date:</Subtitle> {movie.release_date}</p>
+            <p>
+              <Subtitle>Release date:</Subtitle> {movie.release_date}
+            </p>
           </li>
           <li>
             <Genres>
@@ -39,13 +50,19 @@ export const MovieCard = ({ movie }) => {
             </Genres>
           </li>
           <li>
-            <p><Subtitle>Runtime:</Subtitle> {movie.runtime} min.</p>
+            <p>
+              <Subtitle>Runtime:</Subtitle> {movie.runtime} min.
+            </p>
           </li>
           <li>
-            <p><Subtitle>Tagline:</Subtitle> {movie.tagline}</p>
+            <p>
+              <Subtitle>Tagline:</Subtitle> {movie.tagline}
+            </p>
           </li>
           <li>
-            <p><Subtitle>Overview:</Subtitle> {movie.overview}</p>
+            <p>
+              <Subtitle>Overview:</Subtitle> {movie.overview}
+            </p>
           </li>
         </MovieInfo>
       </CardContainer>

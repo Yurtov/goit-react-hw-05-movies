@@ -43,11 +43,19 @@ export const CastMovie = () => {
         <List>
           {casts.map(cast => (
             <Actor key={cast.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                alt="actor foto"
-                loading="lazy"
-              />
+              {cast.profile_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
+                  alt="actor foto"
+                  loading="lazy"
+                />
+              ) : (
+                <img
+                  src={'https://via.placeholder.com/194x291'}
+                  alt="actor foto"
+                  loading="lazy"
+                />
+              )}
               <NameActor>{cast.name}</NameActor>
               <p>Character: {cast.character}</p>
             </Actor>
