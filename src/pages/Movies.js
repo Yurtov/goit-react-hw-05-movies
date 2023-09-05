@@ -49,7 +49,7 @@ const Movies = () => {
       }
     }
     getMovies();
-  }, [query, page, total]);
+  }, [query, page, total, searchParams.size, movieQuery, setSearchParams]);
 
   const heandleSubmit = e => {
     e.preventDefault();
