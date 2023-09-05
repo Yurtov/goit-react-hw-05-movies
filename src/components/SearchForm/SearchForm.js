@@ -1,6 +1,6 @@
 import { BtnSubmit, FormContainer } from './SearchForm.style';
 
-export const SeacrhForm = ({ onSubmit }) => {
+export const SeacrhForm = ({ onSubmit, movieQuery }) => {
   return (
     <FormContainer>
       <form onSubmit={onSubmit}>
@@ -10,6 +10,7 @@ export const SeacrhForm = ({ onSubmit }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search movies"
+          defaultValue={movieQuery}
         />
         <BtnSubmit type="submit">Search</BtnSubmit>
       </form>

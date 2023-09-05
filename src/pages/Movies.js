@@ -21,7 +21,7 @@ const Movies = () => {
 
     async function getMovies() {
       if (movieQuery === '') {
-        setSearchParams({});
+        // setSearchParams({});
         return toast.error(
           'You cannot send an empty request, please write something'
         );
@@ -49,7 +49,7 @@ const Movies = () => {
       }
     }
     getMovies();
-  }, [query, page, total, searchParams.size, movieQuery, setSearchParams]);
+  }, [query, page, total, searchParams.size, movieQuery]);
 
   const heandleSubmit = e => {
     e.preventDefault();
@@ -59,12 +59,11 @@ const Movies = () => {
     setSearchParams({ query: `${newQuery}` });
     setMovies([]);
     setPage(1);
-    e.target.reset();
   };
 
   return (
     <div>
-      <SeacrhForm onSubmit={heandleSubmit} />
+      <SeacrhForm onSubmit={heandleSubmit} movieQuery={movieQuery} />
       {loading && <Spiner />}
       {movies && <MoviesList movies={movies} />}
       <Toaster />
