@@ -5,7 +5,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { fetchCastMovie } from 'api/api';
 import { Actor, List, NameActor } from './CastMovie.styled';
 
-export const CastMovie = () => {
+const CastMovie = () => {
   const { movieId } = useParams();
   const [casts, setCasts] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -66,3 +66,5 @@ export const CastMovie = () => {
     </div>
   );
 };
+
+export default CastMovie;

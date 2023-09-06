@@ -5,7 +5,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { fetchReviewsMovie } from 'api/api';
 import { SubTitle, List, Text, AltText } from './ReviewsMovie.styled';
 
-export const ReviewsMovie = () => {
+const ReviewsMovie = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
   const [total, setTotal] = useState(null);
@@ -57,3 +57,5 @@ export const ReviewsMovie = () => {
     </div>
   );
 };
+
+export default ReviewsMovie;
