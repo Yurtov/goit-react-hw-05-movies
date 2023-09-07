@@ -6,14 +6,13 @@ export const Container = styled.div`
   padding: 0 10px;
 `;
 
-
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 40px;
 `;
 
 export const Item = styled.li`
   width: 250px;
 `;
-
